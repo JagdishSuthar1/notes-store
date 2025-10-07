@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { getNotes } from "./helper/getAllNote";
 import { createNote } from "./helper/createNote";
 import { deleteNote } from "./helper/deleteNote";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export default function HomePage() {
   const { data: session } = useSession();
@@ -63,7 +64,9 @@ export default function HomePage() {
               <Button onClick={handleAdd}>Add</Button>
             </div>
 
+              <ScrollArea className="h-100">
             <div className="grid gap-4">
+
               {notes.length === 0 ? (
                 <p className="text-gray-500 text-center">Notes Not Found</p>
               ) : (
@@ -79,6 +82,7 @@ export default function HomePage() {
                 ))
               )}
             </div>
+              </ScrollArea>
           </div>
         </section>
       )}
