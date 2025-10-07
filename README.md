@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Notes App
 
-## Getting Started
+This is a simple **Next.js + shadcn UI** application where users can sign in with Google and manage personal notes. The backend uses **Prisma** with **PostgreSQL**, and server actions handle CRUD operations for notes.
 
-First, run the development server:
+---
+
+## Features
+
+* **Google Single Sign-On** for authentication
+* **Add, view, and delete notes**
+* **Server actions** for secure backend operations
+* **Responsive UI** built with shadcn components
+* **PostgreSQL** database with Prisma ORM
+
+---
+
+## Tech Stack
+
+* Next.js (App Router)
+* React (Client Components)
+* NextAuth.js (Google OAuth)
+* Prisma ORM + PostgreSQL
+* shadcn/ui + Tailwind CSS
+* TypeScript
+
+---
+
+## Installation & Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/JagdishSuthar1/notes-store.git
+cd notes-store
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Setup `.env` file:
+
+```env
+GOOGLE_CLIENT_ID=<your-google-client-id>
+GOOGLE_CLIENT_SECRET=<your-google-client-secret>
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=<random-secret>
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
+```
+
+4. Run Prisma migrations:
+
+```bash
+npx prisma generate
+npx prisma migrate dev --name init
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to access the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+* Update the `.env` file with production credentials.
+* Ensure PostgreSQL is accessible from your hosting provider.
+* Use **Vercel** or any Next.js compatible hosting to deploy.
+* Disable ESLint and TypeScript checks during build if needed:
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Click **Sign In with Google** on the homepage.
+2. Add a new note using the input and **Add** button.
+3. View your notes in the list below.
+4. Delete a note using the **Delete** button.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
